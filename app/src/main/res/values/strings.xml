@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">TechTestApp</string>
+    <string name="network_unavailable_message">network unavailable</string>
+</resources>
