@@ -1,13 +1,12 @@
 package com.mujeeb.techtestapp.presentation.viewmodels
 
-import androidx.lifecycle.*
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.mujeeb.techtestapp.common.NetworkUtils
 import com.mujeeb.techtestapp.domain.usecases.GetRemoteUserData
 import com.mujeeb.techtestapp.presentation.ui.RequestState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.FlowPreview
-import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,7 +27,7 @@ class MainViewModel @Inject constructor(
                      val response = getRemoteUserData()
                      userDataObservable.value = RequestState.Success(response)
                 }else{
-                    userDataObservable.value = RequestState.NetworkError()
+                    userDataObservable.value = RequestState.NetworkError
                 }
 
             } catch (error: Throwable) {

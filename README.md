@@ -1,5 +1,5 @@
-# ontotechtest
-Note: Floating Action Button (FAB) is used as the refresh button. It is located at the buttom right of the screen
+# Tech test
+Note: Floating Action Button (FAB) is used as the refresh button. It is located at the bottom right of the screen
 
 
 # Improvement plans

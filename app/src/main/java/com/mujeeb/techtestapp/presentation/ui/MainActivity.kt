@@ -1,17 +1,14 @@
 package com.mujeeb.techtestapp.presentation.ui
 
 import android.animation.ValueAnimator
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import com.mujeeb.techtestapp.R
 import com.mujeeb.techtestapp.databinding.ActivityMainBinding
-import com.mujeeb.techtestapp.domain.model.Response
 import com.mujeeb.techtestapp.presentation.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
-
 
 
 @AndroidEntryPoint
@@ -25,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        mainViewModel.userDataObservable.observe(this, Observer {
+        mainViewModel.userDataObservable.observe(this) {
             it?.let {
                 when (it) {
                     is RequestState.Success -> {
@@ -33,12 +30,17 @@ class MainActivity : AppCompatActivity() {
                         showLastEnergyLevel(it.response.bookings[0].car?.lastEnergyLevel)
 
                     }
-                    is RequestState.NetworkError -> Toast.makeText(this,getString(R.string.network_unavailable_message), Toast.LENGTH_LONG).show()
-                    is RequestState.Error -> Toast.makeText(this, it.error, Toast.LENGTH_LONG).show()
+                    is RequestState.NetworkError -> Toast.makeText(
+                        this,
+                        getString(R.string.network_unavailable_message),
+                        Toast.LENGTH_LONG
+                    ).show()
+                    is RequestState.Error -> Toast.makeText(this, it.error, Toast.LENGTH_LONG)
+                        .show()
 
                 }
             }
-        })
+        }
 
         binding.fbRefreshUserData.setOnClickListener {
             mainViewModel.getUserData()
@@ -52,8 +54,8 @@ class MainActivity : AppCompatActivity() {
         animator.duration = DURATION
         animator.addUpdateListener { animation ->
             val progress = animation?.animatedValue as Int
-            binding.pbEnergyLevel.setProgress(progress)
-            binding.tvEnergyLevel.setText(String.format(getString(R.string.energy_level), progress.toString()))
+            binding.pbEnergyLevel.progress = progress
+            binding.tvEnergyLevel.text = String.format(getString(R.string.energy_level), progress.toString())
         }
         animator.start()
 
@@ -64,8 +66,8 @@ class MainActivity : AppCompatActivity() {
         animator.duration = DURATION
         animator.addUpdateListener { animation ->
             val progress = animation?.animatedValue as Int
-            binding.pbMileageLevel.setProgress(progress)
-            binding.tvMileageLevel.setText(progress.toString())
+            binding.pbMileageLevel.progress = progress
+            binding.tvMileageLevel.text = progress.toString()
         }
         animator.start()
 
