@@ -2,4 +2,9 @@
     <string name="app_name">TechTestApp</string>
     <string name="network_unavailable_message">network unavailable</string>
     <string name= "energy_level"> %1$s%%</string>
+    <string name="refresh_user_data_button">refresh user data button</string>
+    <string name="charge_left_label">charge left</string>
+    <string name="battery_label">battery</string>
+    <string name="miles_left_label">miles left</string>
+    <string name="monthly_label">monthly</string>
 </resources>

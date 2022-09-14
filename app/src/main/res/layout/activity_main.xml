@@ -7,7 +7,6 @@
     android:padding="16dp"
     tools:context=".presentation.ui.MainActivity">
 
-
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/pb_mileage_level"
         android:layout_width="wrap_content"
@@ -44,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="@id/pb_mileage_level"
         app:layout_constraintStart_toStartOf="@id/pb_mileage_level"
         app:layout_constraintTop_toTopOf="@id/tv_mileage_level"
-        tools:text="monthly" />
+        android:text="@string/monthly_label" />
 
     <TextView
         android:id="@+id/tv_mileage_left"
@@ -54,7 +53,7 @@
         app:layout_constraintEnd_toEndOf="@id/pb_mileage_level"
         app:layout_constraintStart_toStartOf="@id/pb_mileage_level"
         app:layout_constraintBottom_toBottomOf="@id/tv_mileage_level"
-        tools:text="miles left" />
+        android:text="@string/miles_left_label" />
 
     <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/pb_energy_level"
@@ -92,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="@id/pb_energy_level"
         app:layout_constraintStart_toStartOf="@id/pb_energy_level"
         app:layout_constraintTop_toTopOf="@id/tv_energy_level"
-        tools:text="battery" />
+        android:text="@string/battery_label" />
 
     <TextView
         android:id="@+id/tv_energy_left"
@@ -102,6 +101,19 @@
         app:layout_constraintEnd_toEndOf="@id/pb_energy_level"
         app:layout_constraintStart_toStartOf="@id/pb_energy_level"
         app:layout_constraintBottom_toBottomOf="@id/tv_energy_level"
-        tools:text="charge left" />
+        android:text="@string/charge_left_label" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fb_refresh_user_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_refresh_user_data_48_white"
+        android:contentDescription="@string/refresh_user_data_button"
+        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="@android:color/white"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

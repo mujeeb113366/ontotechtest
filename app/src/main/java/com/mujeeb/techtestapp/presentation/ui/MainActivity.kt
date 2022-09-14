@@ -40,7 +40,9 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
+        binding.fbRefreshUserData.setOnClickListener {
+            mainViewModel.getUserData()
+        }
         mainViewModel.getUserData()
 
     }
