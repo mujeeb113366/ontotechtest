@@ -28,10 +28,80 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:padding="24dp"
         app:layout_constraintBottom_toBottomOf="@id/pb_mileage_level"
         app:layout_constraintEnd_toEndOf="@id/pb_mileage_level"
         app:layout_constraintStart_toStartOf="@id/pb_mileage_level"
         app:layout_constraintTop_toTopOf="@id/pb_mileage_level"
         tools:text="754" />
+
+    <TextView
+        android:id="@+id/tv_mileage_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/pb_mileage_level"
+        app:layout_constraintStart_toStartOf="@id/pb_mileage_level"
+        app:layout_constraintTop_toTopOf="@id/tv_mileage_level"
+        tools:text="monthly" />
+
+    <TextView
+        android:id="@+id/tv_mileage_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/pb_mileage_level"
+        app:layout_constraintStart_toStartOf="@id/pb_mileage_level"
+        app:layout_constraintBottom_toBottomOf="@id/tv_mileage_level"
+        tools:text="miles left" />
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/pb_energy_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        app:indicatorColor="@android:color/holo_green_dark"
+        app:indicatorDirectionCircular="clockwise"
+        app:indicatorSize="120dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:trackCornerRadius="5dp"
+        app:trackThickness="8dp" />
+
+    <TextView
+        android:id="@+id/tv_energy_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="24dp"
+        app:layout_constraintBottom_toBottomOf="@id/pb_energy_level"
+        app:layout_constraintEnd_toEndOf="@id/pb_energy_level"
+        app:layout_constraintStart_toStartOf="@id/pb_energy_level"
+        app:layout_constraintTop_toTopOf="@id/pb_energy_level"
+        tools:text="72%" />
+
+    <TextView
+        android:id="@+id/tv_energy_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/pb_energy_level"
+        app:layout_constraintStart_toStartOf="@id/pb_energy_level"
+        app:layout_constraintTop_toTopOf="@id/tv_energy_level"
+        tools:text="battery" />
+
+    <TextView
+        android:id="@+id/tv_energy_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/pb_energy_level"
+        app:layout_constraintStart_toStartOf="@id/pb_energy_level"
+        app:layout_constraintBottom_toBottomOf="@id/tv_energy_level"
+        tools:text="charge left" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,6 +30,8 @@ class MainActivity : AppCompatActivity() {
                 when (it) {
                     is RequestState.Success -> {
                         showSubscriptionMilesLeft(it.response.bookings[0].subscriptionMilesLeft)
+                        showLastEnergyLevel(it.response.bookings[0].car?.lastEnergyLevel)
+
                     }
                     is RequestState.NetworkError -> Toast.makeText(this,getString(R.string.network_unavailable_message), Toast.LENGTH_LONG).show()
                     is RequestState.Error -> Toast.makeText(this, it.error, Toast.LENGTH_LONG).show()
@@ -40,6 +42,18 @@ class MainActivity : AppCompatActivity() {
 
 
         mainViewModel.getUserData()
+
+    }
+
+    private fun showLastEnergyLevel(lastEnergyLevel: String?) {
+        val animator = ValueAnimator.ofInt(0, lastEnergyLevel?.toInt() ?: 0)
+        animator.duration = DURATION
+        animator.addUpdateListener { animation ->
+            val progress = animation?.animatedValue as Int
+            binding.pbEnergyLevel.setProgress(progress)
+            binding.tvEnergyLevel.setText(String.format(getString(R.string.energy_level), progress.toString()))
+        }
+        animator.start()
 
     }
 
