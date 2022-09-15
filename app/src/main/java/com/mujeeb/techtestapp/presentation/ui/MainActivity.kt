@@ -32,8 +32,6 @@ class MainActivity : AppCompatActivity() {
         window.statusBarColor = color
         supportActionBar?.setBackgroundDrawable(ColorDrawable(color))
 
-       //supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this,R.color.white)))
-
         mainViewModel.userDataObservable.observe(this, Observer {
             it?.let {
                 when (it) {
