@@ -1,10 +1,16 @@
 package com.mujeeb.techtestapp.presentation.ui
 
+
 import android.animation.ValueAnimator
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Menu
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import com.google.android.material.elevation.SurfaceColors
 import com.mujeeb.techtestapp.R
 import com.mujeeb.techtestapp.databinding.ActivityMainBinding
 import com.mujeeb.techtestapp.presentation.viewmodels.MainViewModel
@@ -21,8 +27,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        val color = SurfaceColors.SURFACE_5.getColor(this)
+        window.statusBarColor = color
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(color))
 
-        mainViewModel.userDataObservable.observe(this) {
+       //supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat.getColor(this,R.color.white)))
+
+        mainViewModel.userDataObservable.observe(this, Observer {
             it?.let {
                 when (it) {
                     is RequestState.Success -> {
@@ -40,7 +52,7 @@ class MainActivity : AppCompatActivity() {
 
                 }
             }
-        }
+        })
 
         binding.fbRefreshUserData.setOnClickListener {
             mainViewModel.getUserData()
@@ -71,6 +83,17 @@ class MainActivity : AppCompatActivity() {
         }
         animator.start()
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        val item = menu.findItem(R.id.refresh_button_item)
+        val refreshBtn: ImageButton = item.actionView.findViewById(R.id.ibtn_refresh_user_data)
+        refreshBtn.setOnClickListener {
+            mainViewModel.getUserData()
+        }
+
+        return true
     }
 
     companion object{
