@@ -14,6 +14,10 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
+
+    /*
+    * ActivityScenarioRule launches a given activity before the test starts and closes after the test.
+    */
     @get:Rule
     val mainActivityRule = ActivityScenarioRule(MainActivity::class.java)
 
